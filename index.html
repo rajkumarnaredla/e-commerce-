@@ -1,124 +1,157 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Myntra-style UI — Demo</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rajkumar Naredla | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="logo">myntra<span class="dot">.</span></div>
-      </div>
 
-      <div class="search">
-        <input id="searchInput" type="search" placeholder="Search for products, brands and more" />
-      </div>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <h2 class="logo">RN.</h2>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-      <nav class="icons">
-        <button class="icon-btn">Sign in</button>
-        <button class="icon-btn">Wishlist</button>
-        <button class="icon-btn">Bag (0)</button>
-      </nav>
-    </div>
+<!-- HERO -->
+<section id="home" class="hero reveal">
+  <div class="hero-container">
 
-    <nav class="category-nav">
-      <div class="container">
-        <ul>
-          <li>Men</li>
-          <li>Women</li>
-          <li>Kids</li>
-          <li>Home & Living</li>
-          <li>Beauty</li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <main class="container main-area">
-    <section class="hero">
-      <div class="carousel" id="carousel">
-        <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1533670800217-1b3b5a35f9e4?w=1200&q=80&auto=format&fit=crop')">
-          <div class="hero-caption">
-            <h1>Summer Sale</h1>
-            <p>Up to 60% off on selected styles</p>
-            <button class="btn primary">Shop Now</button>
-          </div>
-        </div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1539986181989-6002c3d7d3de?w=1200&q=80&auto=format&fit=crop')">
-          <div class="hero-caption">
-            <h1>New Arrivals</h1>
-            <p>Latest trends from top brands</p>
-            <button class="btn primary">Explore</button>
-          </div>
-        </div>
-        <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
-        <button class="carousel-btn next" id="nextBtn">&#10095;</button>
-      </div>
-    </section>
-
-    <div class="content-grid">
-      <aside class="filters" id="filters">
-        <h3>Filters</h3>
-
-        <div class="filter-group">
-          <h4>Category</h4>
-          <label><input type="checkbox" value="T-Shirt" /> T-Shirts</label>
-          <label><input type="checkbox" value="Jeans" /> Jeans</label>
-          <label><input type="checkbox" value="Shoes" /> Shoes</label>
-        </div>
-
-        <div class="filter-group">
-          <h4>Brand</h4>
-          <label><input type="checkbox" value="BrandA" /> Brand A</label>
-          <label><input type="checkbox" value="BrandB" /> Brand B</label>
-          <label><input type="checkbox" value="BrandC" /> Brand C</label>
-        </div>
-
-        <div class="filter-group">
-          <h4>Price</h4>
-          <label><input type="radio" name="price" value="0-999" /> Under ₹1,000</label>
-          <label><input type="radio" name="price" value="1000-2999" /> ₹1,000 - ₹2,999</label>
-          <label><input type="radio" name="price" value="3000+" /> ₹3,000+</label>
-        </div>
-      </aside>
-
-      <section class="product-section">
-        <div class="toolbar">
-          <div class="results" id="resultsCount">Showing 0 products</div>
-          <select id="sortSelect">
-            <option value="popular">Sort: Popular</option>
-            <option value="low">Price: Low to High</option>
-            <option value="high">Price: High to Low</option>
-            <option value="new">Newest First</option>
-          </select>
-        </div>
-
-        <div id="products" class="product-grid">
-          <!-- product cards injected here -->
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>Demo Myntra-style UI • Built with HTML, CSS & JS</p>
-    </div>
-  </footer>
-
-  <!-- Product Modal -->
-  <div id="productModal" class="modal hidden" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-      <button class="modal-close" id="modalClose">&times;</button>
-      <div class="modal-body" id="modalBody">
-        <!-- filled by JS -->
+    <div class="hero-left">
+      <div class="card3d">
+        <img src="images/profile.jpg" class="profile-pic" alt="Rajkumar">
       </div>
     </div>
+
+    <div class="hero-right">
+      <h1>Hi, I'm <span class="accent">Rajkumar</span></h1>
+      <h2 class="typing"></h2>
+
+      <p>
+        Frontend Developer focused on building
+        modern, responsive, and animated web applications.
+      </p>
+
+      <div class="buttons">
+        <a href="Raj kumar Resume.pdf" download
+           class="btn glow-btn" id="resumeBtn">
+          📄 Download Resume
+        </a>
+
+        <button class="btn-outline" onclick="openResume()">
+          👁️ View Resume
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESUME MODAL -->
+<div id="resumeModal" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-label="Resume">
+    <span class="close" onclick="closeResume()">&times;</span>
+    <iframe
+      src="Raj kumar Resume.pdf"
+      title="Rajkumar Resume"
+      frameborder="0"
+    ></iframe>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section reveal">
+  <div class="card3d about-card">
+    <h2>About Me</h2>
+    <p>
+      I am a frontend developer fresher with strong fundamentals in
+      HTML, CSS, JavaScript, React JS, and Java.
+      I enjoy creating visually appealing and interactive user experiences.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section dark reveal">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>React JS</span>
+    <span>Java</span>
+    <span>Git & GitHub</span>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section reveal">
+  <h2>Projects</h2>
+
+  <div class="project-card">
+    <h3>E-commerce</h3>
+    <a href="https://rajkumarnaredla.github.io/e-commerce-/" target="_blank" rel="noopener" class="proj-link">
+      <img src="images/ecommerce.png" alt="E-commerce project thumbnail" class="project-img">
+    </a>
+    <p>Responsive e-commerce UI using HTML, CSS, JavaScript, and React.</p>
+    <p><a href="https://github.com/rajkumarnaredla/" target="_blank" rel="noopener">View repository</a></p>
   </div>
 
-  <script src="script.js" defer></script>
-</body>
-</html>
+  <!-- EDUCATION -->
+  <section id="education" class="section reveal dark">
+    <h2>Education</h2>
+    <div class="education-list">
+      <div class="edu-item">
+        <h3>B.Tech (CSC) — Malla Reddy Engineering College &amp; Management Sciences, Hyderabad <span class="edu-date">June 2020 – July 2025</span></h3>
+        <p>Undergraduate program in Computer Science (CSC). Relevant coursework: Data Structures, Algorithms, Web Development.</p>
+      </div>
+
+      <div class="edu-item">
+        <h3>Intermediate (MPC) — Allphores Junior College, Karimnagar, Telangana <span class="edu-date">2018 – 2020</span></h3>
+        <p>Mathematics, Physics, Chemistry stream with strong foundation in problem solving and programming basics.</p>
+      </div>
+
+      <div class="edu-item">
+        <h3>Secondary School Certificate — Siddartha High School, Karimnagar, Telangana <span class="edu-date">March 2018</span></h3>
+        <p>Completed secondary school education with coursework in science and mathematics.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section reveal">
+    <h2>Contact</h2>
+
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <h3>Get in touch</h3>
+        <p>Email: <a href="mailto:rajkumarnaredla42@gmail.com">rajkumarnaredla42@gmail.com</a></p>
+        <p>Phone: <a href="tel:+919603460568">+91 96034 60568</a></p>
+        <p>Location: Karimnagar, Telangana</p>
+
+        <div class="socials">
+          <a href="https://github.com/rajkumarnaredla/" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+          <a href="https://www.linkedin.com/in/rajkumar-naredla-920941324/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+
+      <form class="contact-form" action="mailto:rajkumarnaredla42@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+        <button class="btn" type="submit">Send Email</button>
+      </form>
+
+    </div>
+  </section>
