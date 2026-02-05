@@ -1,83 +1,70 @@
-:root{
-  --bg:#f7f7f9;
-  --card:#fff;
-  --accent:#ff3f6c;
-  --muted:#666;
-  --container-width:1200px;
-  --radius:10px;
+// Typing animation
+document.addEventListener("DOMContentLoaded", () => {
+  const text = "Frontend Developer | Java | React JS";
+  let index = 0;
+  const typingElement = document.querySelector(".typing");
+
+  function type() {
+    if (!typingElement) return;
+    if (index < text.length) {
+      typingElement.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(type, 80);
+    }
+  }
+  type();
+});
+
+// Resume modal
+function openResume() {
+  const modal = document.getElementById("resumeModal");
+  if (!modal) return;
+  modal.style.display = "block";
+  modal.setAttribute("aria-hidden", "false");
 }
 
-*{box-sizing:border-box}
-body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:var(--bg); color:#222; -webkit-font-smoothing:antialiased}
-.container{max-width:var(--container-width); margin:0 auto; padding:0 16px}
-
-.site-header{background:#fff; box-shadow:0 1px 0 rgba(0,0,0,0.06)}
-.header-inner{display:flex; align-items:center; gap:16px; padding:12px 0}
-.brand .logo{font-weight:800; font-size:22px; color:#111}
-.brand .dot{color:var(--accent)}
-
-.search{flex:1}
-.search input{width:100%; padding:10px 14px; border-radius:24px; border:1px solid #e6e6e6; font-size:14px}
-
-.icons{display:flex; gap:8px}
-.icon-btn{background:none; border:1px solid transparent; padding:8px 12px; border-radius:6px; cursor:pointer}
-.icon-btn:hover{background:#fafafa}
-
-.category-nav{background:#fff; border-top:1px solid #f0f0f0}
-.category-nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:10px 0; overflow:auto}
-.category-nav li{padding:6px 8px; cursor:pointer; color:var(--muted)}
-
-.main-area{padding:18px 0}
-
-.hero{margin-bottom:20px}
-.carousel{position:relative; height:260px; overflow:hidden; border-radius:12px}
-.slide{position:absolute; inset:0; background-size:cover; background-position:center; display:flex; align-items:center; color:#fff; transition:opacity .5s ease; opacity:0}
-.slide.active{opacity:1; position:relative}
-.hero-caption{background:linear-gradient(90deg, rgba(0,0,0,0.45), rgba(0,0,0,0.1)); padding:24px; border-radius:8px; margin-left:24px; max-width:420px}
-.hero h1{margin:0 0 6px; font-size:32px}
-.hero p{margin:0 0 12px; color:#f3f3f3}
-
-.btn{padding:8px 14px; border-radius:8px; border:0; cursor:pointer}
-.btn.primary{background:var(--accent); color:#fff}
-
-.carousel-btn{position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.35); color:#fff; border:0; padding:8px 10px; border-radius:4px; cursor:pointer}
-.carousel-btn.prev{left:12px}
-.carousel-btn.next{right:12px}
-
-.content-grid{display:grid; grid-template-columns:260px 1fr; gap:18px}
-.filters{background:var(--card); padding:16px; border-radius:12px; box-shadow:0 4px 18px rgba(0,0,0,0.04)}
-.filter-group h4{margin:8px 0 6px}
-.filter-group label{display:block; margin:6px 0; color:var(--muted)}
-
-.product-section{min-height:200px}
-.toolbar{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px}
-.product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
-
-/* Product card */
-.card{background:var(--card); border-radius:12px; padding:12px; box-shadow:0 6px 22px rgba(27,31,35,0.04); display:flex; flex-direction:column; gap:10px}
-.card img{width:100%; height:220px; object-fit:cover; border-radius:8px}
-.card .title{font-weight:600; font-size:14px}
-.card .brand{color:var(--muted); font-size:13px}
-.card .price{color:var(--accent); font-weight:700; margin-top:auto}
-.card .actions{display:flex; gap:8px}
-
-/* modal */
-.modal{position:fixed; inset:0; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; padding:20px}
-.modal.hidden{display:none}
-.modal-content{background:#fff; border-radius:12px; width:min(920px,98%); max-height:90vh; overflow:auto; position:relative; padding:18px}
-.modal-close{position:absolute; right:12px; top:12px; background:transparent; border:0; font-size:28px; cursor:pointer}
-
-/* responsive */
-@media (max-width:1000px){
-  .product-grid{grid-template-columns:repeat(3,1fr)}
+function closeResume() {
+  const modal = document.getElementById("resumeModal");
+  if (!modal) return;
+  modal.style.display = "none";
+  modal.setAttribute("aria-hidden", "true");
 }
-@media (max-width:760px){
-  .content-grid{grid-template-columns:1fr; gap:12px}
-  .filters{order:2; display:none}
-  .product-grid{grid-template-columns:repeat(2,1fr)}
-  .hero{height:220px}
-}
-@media (max-width:420px){
-  .product-grid{grid-template-columns:repeat(1,1fr)}
-  .search input{font-size:13px}
-}
+
+// Scroll reveal
+window.addEventListener("scroll", () => {
+  document.querySelectorAll(".reveal").forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+});
+
+// Project image fallback: replace broken images with a styled fallback card
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.project-img').forEach(img => {
+    img.addEventListener('error', () => {
+      try {
+        const link = img.closest('.proj-link');
+        const repoHref = link ? link.getAttribute('href') : '#';
+
+        const fallback = document.createElement('div');
+        fallback.className = 'project-fallback';
+        fallback.innerHTML = `<div><h4>E-commerce (demo)</h4><p>Click to open demo</p></div>`;
+
+        // Replace image with fallback wrapped in the same link
+        if (link) {
+          link.replaceChild(fallback, img);
+        } else {
+          img.replaceWith(fallback);
+        }
+
+        if (link && repoHref && repoHref !== '#') {
+          link.setAttribute('aria-label', 'Open project demo');
+        }
+      } catch (e) {
+        // silent fail
+      }
+    });
+  });
+});
